@@ -1,4 +1,4 @@
-# Zayro Disfraces
+# Zayro System
 <p align="center"><img width="245" src="https://github.com/senauti/project-gaes2-zayro/blob/main/01-Trimestre%201/logo2.png"></p>
 
 ## Objetivo general 🎯
