@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/zayro', function () {
-    return view('zayro');
+Route::get('/inventario', function () {
+    return view('inventario');
 });
