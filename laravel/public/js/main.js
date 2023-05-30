@@ -51,7 +51,7 @@ function validate() {
   if (Ucheck.trim() == 'olgada150@gmail.com' && Pcheck == 'olgada150') {
     alert("Hola administrador, en un momento será redirigido al panel de control")
     setTimeout(() => {
-      window.location.href = "dashboard.html";
+      window.location.href = "/dashboard";
     }, 2000);
   }
   else {

@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="icon" type="image/png" href="{{ asset('images/logo2.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{asset("css/dashboard.css")}}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
 </head>
 
 <body>
-    <!-- partial:index.partial.html -->
     <input type="checkbox" id="nav-toggle">
 
     <div class="sidebar">
@@ -26,7 +25,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="dashboard.html" class="active"><span class="fas fa-cubes"></span>
+                    <a href="/dashboard" class="active"><span class="fas fa-cubes"></span>
                         <span>Panel de control</span>
                     </a>
                 </li>
@@ -36,7 +35,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="informes.html"><span class="fas fa-clipboard-list"></span>
+                    <a href="/informes"><span class="fas fa-clipboard-list"></span>
                         <span>Informes</span>
                     </a>
                 </li>
@@ -46,12 +45,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="inventario.html"><span class="fas fa-table"></span>
+                    <a href="/inventario"><span class="fas fa-table"></span>
                         <span>Inventario</span>
                     </a>
                 </li>
                 <li>
-                    <a href="factura.html"><span class="fas fa-receipt"></span>
+                    <a href="/factura"><span class="fas fa-receipt"></span>
                         <span>Facturación</span>
                     </a>
                 </li>
@@ -76,7 +75,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.html"><span class="fas fa-house-user"></span>
+                    <a href="/index"><span class="fas fa-house-user"></span>
                         <span>Página de inicio</span>
                     </a>
                 </li>
@@ -91,7 +90,8 @@
     <div class="main-wrapper">
         <div class="main-content">
             <header>
-                <img src="{{asset("images/logo2.png")}}" alt="logo zayro disfraces" width="80px" style="background-color:white; border-radius: 20px; margin-left: 50px;">
+                <img src="{{ asset('img/logo2.png') }}" alt="logo zayro disfraces" width="80px"
+                    style="background-color:white; border-radius: 20px; margin-left: 50px;">
                 <h2 class="heading" id="dashboard">
                     Panel de control
                 </h2>
@@ -106,17 +106,11 @@
                     <div class="input">
                         <input type="text" placeholder="Buscar" id="mysearch" autocomplete="off"
                             onkeydown="display(this)">
-
                     </div>
-
                 </div>
 
-
-
-
                 <div class="user-wrapper">
-                    <img src="{{asset("images/logo1.png")}}"
-                        alt="logo zayro system">
+                    <img src="{{ asset('img/logo1.png') }}" alt="logo zayro system">
                     <div>
                         <h4>Olga D'aleman</h4>
                         <b>Administrador</b></small>
@@ -286,8 +280,7 @@
                             <div class="card-body">
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>
                                                 Jorge Cardenas</h4>
@@ -303,8 +296,7 @@
 
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>Simon Estrada</h4>
                                             <small>20/03/2023 14:45
@@ -320,8 +312,7 @@
 
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>Felipe Alvarez</h4>
                                             <small>20/03/2023 14:30</small>
@@ -336,8 +327,7 @@
 
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>Andres Figueroa</h4>
                                             <small>19/03/2023 20:44</small>
@@ -352,8 +342,7 @@
 
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>Carolina Gomez</h4>
                                             <small>19/03/2023 20:40</small>
@@ -368,8 +357,7 @@
 
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>Daniela Coha</h4>
                                             <small>19/03/2023 15:44</small>
@@ -384,8 +372,7 @@
 
                                 <div class="customer">
                                     <div class="info">
-                                        <img src="{{asset("images/user-solid.svg")}}"
-                                            alt="usuario">
+                                        <img src="{{ asset('img/user-solid.svg') }}" alt="usuario">
                                         <div>
                                             <h4>Karla Montoya</h4>
                                             <small>14/03/2023 20:30</small>
@@ -413,7 +400,7 @@
         </div>
     </div>
     <!-- partial -->
-    <script src="{{asset("js/dashboard.js")}}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
 
 </body>
 

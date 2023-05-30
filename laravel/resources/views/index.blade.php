@@ -6,13 +6,13 @@
     <title>
         Inicio | Zayro Disfraces
     </title>
-    <link rel="icon" type="image/png" href="{{asset('img/logo2.png')}}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@700&display=swap" rel="stylesheet">
@@ -27,8 +27,9 @@
     <nav class="sidebar">
         <div class="nav-header">
             <div class="logo-wrap">
-                <a class="logo-icon" href="#"><img alt="logo-icon" src="{{asset('img/logo1.png')}}" width="40" /></a>
-                <a class="logo-text" href="{{url('/zayro')}}">ZAYRO <span class="subtitle">DISFRACES</span></a>
+                <a class="logo-icon" href="#"><img alt="logo-icon" src="{{ asset('img/logo1.png') }}"
+                        width="40" /></a>
+                <a class="logo-text" href="{{ url('/') }}">ZAYRO <span class="subtitle">DISFRACES</span></a>
             </div>
 
             <div class="nav-search">
@@ -102,7 +103,8 @@
 
                         <div class="action_btns">
                             <div class="one_half"><a href="#" id="login_form" class="btn">Iniciar</a></div>
-                            <div class="one_half last"><a href="#" id="register_form" class="btn">Registrar</a></div>
+                            <div class="one_half last"><a href="#" id="register_form"
+                                    class="btn">Registrar</a></div>
                         </div>
                     </div>
 
@@ -126,7 +128,8 @@
                                 <div class="one_half"><a href="#" class="btn back_btn"><i
                                             class="fa fa-angle-double-left"></i> Volver</a></div>
                                 <div class="one_half last"><input type="submit" id="inic"
-                                        onclick='validate();return false;' class="btn btn_red" value="Iniciar" /></div>
+                                        onclick='validate();return false;' class="btn btn_red" value="Iniciar" />
+                                </div>
                             </div>
                         </form>
 
@@ -169,13 +172,14 @@
                 </section>
             </div>
             <div class="header-menu">
-                <h2 id="title" onclick="location.href={{url('/zayro')}}">ZAYRO <span class="subtitle">DISFRACES</span></h2>
+                <h2 id="title" onclick="location.href={{ url('/') }}">ZAYRO <span
+                        class="subtitle">DISFRACES</span></h2>
             </div>
 
             <div class="header-search">
                 <div class="search">
-                    <i class="material-icons"><img src="{{asset('img/busqueda.png')}}" id="search_img"
-                            onClick="location.href='500.html'"></i>
+                    <i class="material-icons"><img src="{{ asset('img/busqueda.png') }}" id="search_img"
+                            onClick="location.href='/500'"></i>
                     <input type="search" id="searchh" name="search" placeholder="Buscar" />
                 </div>
             </div>
@@ -199,27 +203,27 @@
 
 
     <ul class="bxslider">
-        <li class="slide-item"><img src="{{asset('img/primera.webp')}}" alt="" />
+        <li class="slide-item"><img src="{{ asset('img/primera.webp') }}" alt="" />
         </li>
-        <li class="slide-item"><img src="{{asset('img/segunda.webp')}}" alt="" />
+        <li class="slide-item"><img src="{{ asset('img/segunda.webp') }}" alt="" />
         </li>
-        <li class="slide-item"><img src="{{asset('img/tercera.webp')}}" alt="" />
+        <li class="slide-item"><img src="{{ asset('img/tercera.webp') }}" alt="" />
         </li>
     </ul>
 
 
     <hr class="hr-text" data-content="¡No busques más!">
     <div id="app" class="container">
-        <card data-image="{{asset('img/carrusel2.webp')}}" onClick="location.href='404.html'">
+        <card data-image="{{ asset('img/carrusel2.webp') }}" onClick="location.href='/404'">
             <h1 slot="header">DISFRACES PARA CABALLERO</h1>
         </card>
-        <card data-image="{{asset('img/carrusel6.webp')}}" onClick="location.href='404.html'">
+        <card data-image="{{ asset('img/carrusel6.webp') }}" onClick="location.href='/404'">
             <h1 slot="header">DISFRACES PARA DAMA</h1>
         </card>
-        <card data-image="{{asset('img/carrusel1.webp')}}" onClick="location.href='404.html'">
+        <card data-image="{{ asset('img/carrusel1.webp') }}" onClick="location.href='/404'">
             <h1 slot="header">DISFRACES PARA EVENTOS</h1>
         </card>
-        <card data-image="{{asset('img/ninos.webp')}}" onClick="location.href='404.html'">
+        <card data-image="{{ asset('img/ninos.webp') }}" onClick="location.href='/404'">
             <h1 slot="header">DISFRACES PARA NIÑOS</h1>
         </card>
     </div>
@@ -298,10 +302,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://leanmodal.finelysliced.com.au/js/jquery.leanModal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0-alpha.2/umd/react.production.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <script src="{{ asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
