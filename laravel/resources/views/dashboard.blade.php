@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="/dashboard" class="active"><span class="fas fa-cubes"></span>
+                    <a href="{{ url('/dashboard') }}" class="active"><span class="fas fa-cubes"></span>
                         <span>Panel de control</span>
                     </a>
                 </li>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/informes"><span class="fas fa-clipboard-list"></span>
+                    <a href="{{ url('/informes') }}"><span class="fas fa-clipboard-list"></span>
                         <span>Informes</span>
                     </a>
                 </li>
@@ -45,12 +45,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/inventario"><span class="fas fa-table"></span>
+                    <a href="{{ url('/inventario') }}"><span class="fas fa-table"></span>
                         <span>Inventario</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/factura"><span class="fas fa-receipt"></span>
+                    <a href="{{ url('/factura') }}"><span class="fas fa-receipt"></span>
                         <span>Facturación</span>
                     </a>
                 </li>
@@ -70,17 +70,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fas fa-shopping-cart"></span>
+                    <a href="{{ url('/carrito') }}"><span class="fas fa-shopping-cart"></span>
                         <span>Carrito</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/index"><span class="fas fa-house-user"></span>
+                    <a href="{{ url('/') }}"><span class="fas fa-house-user"></span>
                         <span>Página de inicio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fas fa-sign-out-alt"></span>
+                    <a href="{{ url('/') }}"><span class="fas fa-sign-out-alt"></span>
                         <span>Salir</span>
                     </a>
                 </li>
@@ -393,13 +393,12 @@
             </main>
             <div class="footer">
                 <div class="word">
-
                     <p>Zayro System © 2023</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- partial -->
+
     <script src="{{ asset('js/dashboard.js') }}"></script>
 
 </body>

@@ -126,7 +126,7 @@
         </div>
 
     </div>
-    <!-- partial -->
+
     <script src="{{ asset('js/500.js')}}"></script>
 
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" type="image/png" href="images/logo2.png">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/informes.css">
+    <link rel="stylesheet" href="{{ asset('css/informes.css') }}">
 
 </head>
 
@@ -26,7 +26,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="dashboard.html"><span class="fas fa-cubes"></span>
+                    <a href="{{ url('/dashboard') }}"><span class="fas fa-cubes"></span>
                         <span>Panel de control</span>
                     </a>
                 </li>
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="informes.html" class="active"><span class="fas fa-clipboard-list"></span>
+                    <a href="{{ url('/informes') }}" class="active"><span class="fas fa-clipboard-list"></span>
                         <span>Informes</span>
                     </a>
                 </li>
@@ -46,12 +46,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="inventario.html"><span class="fas fa-table"></span>
+                    <a href="{{ url('/inventario') }}"><span class="fas fa-table"></span>
                         <span>Inventario</span>
                     </a>
                 </li>
                 <li>
-                    <a href="factura.html"><span class="fas fa-receipt"></span>
+                    <a href="{{ url('/factura') }}"><span class="fas fa-receipt"></span>
                         <span>Facturación</span>
                     </a>
                 </li>
@@ -71,17 +71,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fas fa-shopping-cart"></span>
+                    <a href="{{ url('/carrito') }}"><span class="fas fa-shopping-cart"></span>
                         <span>Carrito</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.html"><span class="fas fa-house-user"></span>
+                    <a href="{{ url('/') }}"><span class="fas fa-house-user"></span>
                         <span>Página de inicio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fas fa-sign-out-alt"></span>
+                    <a href="{{ url('/') }}"><span class="fas fa-sign-out-alt"></span>
                         <span>Salir</span>
                     </a>
                 </li>
@@ -91,7 +91,7 @@
     <div class="main-wrapper">
         <div class="main-content">
             <header>
-                <img src="images/logo2.png" alt="" width="80px"
+                <img src="{{ asset('img/logo2.png') }}" alt="" width="80px"
                     style="background-color:white; border-radius: 20px; margin-left: 50px;">
                 <h2 class="heading" id="dashboard">
                     Informes
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="user-wrapper">
-                    <img src="images/logo1.png" alt="">
+                    <img src="{{ asset('img/logo1.png') }}" alt="">
                     <div>
                         <h4>Olga D'aleman</h4>
                         <b>Administrador</b></small>
@@ -180,14 +180,13 @@
             </main>
             <div class="footer">
                 <div class="word">
-
                     <p>Zayro System © 2023</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="js/informes.js"></script>
+    <script src="{{ asset('js/informes.js') }}"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
 </body>
 

@@ -9,15 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="icon" type="image/png" href="{{asset("images/logo2.png")}}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{asset("css/inventario.css")}}">
+    <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
 </head>
 
 <body>
-    <!-- partial:index.partial.html -->
-    <input type="checkbox" id="nav-toggle">
 
+    <input type="checkbox" id="nav-toggle">
     <div class="sidebardas">
         <div class="sidebar-brand">
             <h2><span><i class="fas fa-mask"></i></span><span id="kleenpulse">Zayro System</span></h2>
@@ -25,7 +24,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="dashboard.html"><span class="fas fa-cubes"></span>
+                    <a href="{{ url('/dashboard') }}"><span class="fas fa-cubes"></span>
                         <span>Panel de control</span>
                     </a>
                 </li>
@@ -35,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="informes.html"><span class="fas fa-clipboard-list"></span>
+                    <a href="{{ url('/informes') }}"><span class="fas fa-clipboard-list"></span>
                         <span>Informes</span>
                     </a>
                 </li>
@@ -45,12 +44,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="inventario.html" class="active"><span class="fas fa-table"></span>
+                    <a href="{{ url('/inventario') }}" class="active"><span class="fas fa-table"></span>
                         <span>Inventario</span>
                     </a>
                 </li>
                 <li>
-                    <a href="factura.html"><span class="fas fa-receipt"></span>
+                    <a href="{{ url('/factura') }}"><span class="fas fa-receipt"></span>
                         <span>Facturación</span>
                     </a>
                 </li>
@@ -70,17 +69,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fas fa-shopping-cart"></span>
+                    <a href="{{ url('/carrito') }}"><span class="fas fa-shopping-cart"></span>
                         <span>Carrito</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.html"><span class="fas fa-house-user"></span>
+                    <a href="{{ url('/') }}"><span class="fas fa-house-user"></span>
                         <span>Página de inicio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fas fa-sign-out-alt"></span>
+                    <a href="{{ url('/') }}"><span class="fas fa-sign-out-alt"></span>
                         <span>Salir</span>
                     </a>
                 </li>
@@ -90,7 +89,7 @@
     <div class="main-wrapper">
         <div class="main-content">
             <header>
-                <img src="{{asset("images/logo2.png")}}" alt="" width="80px"
+                <img src="{{ asset('img/logo2.png') }}" alt="" width="80px"
                     style="background-color:white; border-radius: 20px; margin-left: 50px;">
                 <h2 class="heading" id="dashboard">
                     Inventario
@@ -106,16 +105,11 @@
                     <div class="input">
                         <input type="text" placeholder="Buscar" id="mysearch" autocomplete="off"
                             onkeydown="display(this)">
-
                     </div>
-
                 </div>
 
-
-
-
                 <div class="user-wrapper">
-                    <img src="{{asset("images/logo1.png")}}" alt="">
+                    <img src="{{ asset('img/logo1.png') }}" alt="">
                     <div>
                         <h4>Olga D'aleman</h4>
                         <b>Administrador</b></small>
@@ -185,16 +179,15 @@
         </main>
         <div class="footer">
             <div class="word">
-
                 <p>Zayro System © 2023</p>
             </div>
         </div>
     </div>
     </div>
-    <!-- partial -->
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js'></script>
-    <script src="{{asset("js/inventario.js")}}"></script>
+    <script src="{{ asset('js/inventario.js') }}"></script>
 </body>
 
 </html>
