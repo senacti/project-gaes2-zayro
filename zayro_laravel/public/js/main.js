@@ -1,10 +1,3 @@
-/* Enter en inicio de sesion */
-const login_js = document.getElementById("login_password");
-login_js.addEventListener("keypress", function onEvent(event) {
-  if (event.key === "Enter") {
-    document.getElementById("inic").click();
-  }
-});
 
 const search_js = document.getElementById("searchh");
 search_js.addEventListener("keypress", function onEvent(event) {
@@ -42,22 +35,6 @@ $(".overlay").on("click", function () {
   }
   $(this).hide();
 });
-
-/* Login validation */
-
-function validate() {
-  var Ucheck = document.forms['LogForm']['login_username'].value;
-  var Pcheck = document.forms['LogForm']['login_password'].value;
-  if (Ucheck.trim() == 'olgada150@gmail.com' && Pcheck == 'olgada150') {
-    alert("Hola administrador, en un momento será redirigido al panel de control")
-    setTimeout(() => {
-      window.location.href = "/dashboard";
-    }, 2000);
-  }
-  else {
-    console("Usuario no registrado, intentelo de nuevo");
-  }
-}
 
 /*
 ! CARRUSEL */
@@ -153,15 +130,9 @@ Vue.component('card', {
   }
 });
 
-
-
 const app = new Vue({
   el: '#app'
 });
-
-
-/* 
-! sign in - log in popup */
 
 // Plugin options and our code
 $("#modal_trigger").leanModal({
@@ -197,8 +168,8 @@ $(function () {
 });
 
 
-/*
-! PRODUCT SLIDER  */
+
+// !PRODUCT SLIDER 
 
 const slideWidth = 30;
 

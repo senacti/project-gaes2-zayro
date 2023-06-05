@@ -110,62 +110,135 @@
 
 
                     <div class="user_login">
-                        <form id="LogForm" autocomplete="off">
-                            <label>Correo</label>
-                            <center><input required type="email" id="login_username" /></center>
-                            <br />
+                        <form id="login-form" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div>
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus />
 
-                            <label>Contraseña</label>
-                            <center><input required type="password" id="login_password" /></center>
-                            <br />
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="password">Contraseña</label>
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    required autocomplete="current-password" />
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
                             <div class="checkbox">
-                                <input id="remember" type="checkbox" />
-                                <label for="remember">Recordar mi cuenta</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                        {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Recuerdame') }}
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="action_btns">
                                 <div class="one_half"><a href="#" class="btn back_btn"><i
-                                            class="fa fa-angle-double-left"></i> Volver</a></div>
-                                <div class="one_half last"><input type="submit" id="inic"
-                                        onclick='validate();return false;' class="btn btn_red" value="Iniciar" />
+                                            class="fa fa-angle-double-left"></i> Volver</a>
                                 </div>
+                                <div class="one_half last">
+                                    <button type="submit" class="btn btn_red">
+                                        {{ __('Iniciar') }}
+                                    </button>
+                                </div>
+
+                                @if (Route::has('password.request'))
+                                    <a class="forgot_password" href="{{ route('password.request') }}">
+                                        {{ __('¿Olvidaste tu contraseña?') }}
+                                    </a>
+                                @endif
                             </div>
                         </form>
-
-                        <a href="#" class="forgot_password">
-                            <center>¿Olvidaste tu contraseña?</center>
-                        </a>
                     </div>
 
                     <div class="user_register">
-                        <form>
-                            <label>Nombre completo</label>
-                            <center><input required type="text" /></center>
-                            <br />
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
 
-                            <label>Correo electrónico</label>
-                            <center><input required type="email" /></center>
-                            <br />
+                            <div>
+                                <label for="name">{{ __('Nombre completo') }}</label>
 
-                            <label>Contraseña</label>
-                            <center><input required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                    title="Debe contener por lo menos 8 caracteres, un número, una letra mayúscula y una minúscula" />
-                            </center>
-                            <br />
+                                <div>
+                                    <input id="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                            <div class="checkbox">
-                                <input id="send_updates" type="checkbox" />
-                                <label for="send_updates">Recibir correos promocionales<br></label>
-                                <input id="terms" type="checkbox" required />
-                                <label for="terms">Acepto términos y condiciones</label>
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
+
+                            <div>
+                                <label for="email">{{ __('Correo Electrónico') }}</label>
+
+                                <div>
+                                    <input id="email" type="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email">
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="password">{{ __('Contraseña') }}</label>
+
+                                <div>
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="password-confirm">{{ __('Confirmar Contraseña') }}</label>
+
+                                <div>
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+                            
+                            <br>
 
                             <div class="action_btns">
                                 <div class="one_half"><a href="#" class="btn back_btn"><i
                                             class="fa fa-angle-double-left"></i> Volver</a></div>
-                                <div class="one_half last"><input type="submit" class="btn btn_red"
-                                        value="Registrarse" /></div>
+                                <div class="one_half last">
+                                    <button type="submit" class="btn btn_red">
+                                        {{ __('Registrarse') }}
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
