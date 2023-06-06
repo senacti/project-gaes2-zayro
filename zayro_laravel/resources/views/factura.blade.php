@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Facturación - Zayro Disfraces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/factura.css') }}">
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span><i class="fas fa-mask"></i></span><span id="kleenpulse">Zayro System</span></h2>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="{{ url('/dashboard') }}"><span class="fas fa-cubes"></span>
+                        <span>Panel de control</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><span class="fas fa-users"></span>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/informes') }}"><span class="fas fa-clipboard-list"></span>
+                        <span>Informes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><span class="fas fa-shopping-bag"></span>
+                        <span>Pedidos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/inventario') }}"><span class="fas fa-table"></span>
+                        <span>Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/factura') }}" class="active"><span class="fas fa-receipt"></span>
+                        <span>Facturación</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-user-circle"></span>
+                        <span>Vendedores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><span class="fas fa-calendar-plus"></span>
+                        <span>Marketing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><span class="fas fa-headset"></span>
+                        <span>Atención al cliente</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/carrito') }}"><span class="fas fa-shopping-cart"></span>
+                        <span>Carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/') }}"><span class="fas fa-house-user"></span>
+                        <span>Página de inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/') }}"><span class="fas fa-sign-out-alt"></span>
+                        <span>Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="main-content">
+            <header>
+                <img src="{{ asset('img/logo2.png') }}" alt="" width="80px"
+                    style="background-color:white; border-radius: 20px; margin-left: 50px;">
+                <h2 class="heading" id="dashboard">
+                    Facturación
+                </h2>
+                <label for="nav-toggle">
+                    <span class="fas fa-bars"></span>
+                </label>
+
+                <div class="search">
+                    <div class="search-rotate">
+                        <div class="icon"></div>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="Buscar" id="mysearch" autocomplete="off"
+                            onkeydown="display(this)">
+                    </div>
+                </div>
+
+                <div class="user-wrapper">
+                    <img src="{{ asset('img/logo1.png') }}" alt="">
+                    <div>
+                        <h4>Olga D'aleman</h4>
+                        <b>Administrador</b></small>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="switch" id="switch">
+                    <div id="toggle">
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="card-single">
+                        <div>
+                            <h1 id="customer"></h1>
+                            <span>Facturas realizadas de ventas en el día</span>
+                        </div>
+                        <div>
+                            <span class="fas fa-users"></span>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1 id="project"></h1>
+                            <span>Facturas realizadas de alquiler en el día</span>
+                        </div>
+                        <div>
+                            <span class="fas fa-clipboard"></span>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1 id="order"></h1>
+                            <span>Facturas impresas</span>
+                        </div>
+                        <div>
+                            <span class="fas fa-shopping-bag"></span>
+                        </div>
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <h1>
+                                <p id="income"></p>
+                            </h1>
+                            <span>Facturas enviadas al correo</span>
+                        </div>
+                        <div>
+                            <span class="fas fa-theater-masks"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-grid">
+                    <div class="projects">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="heading">Plantilla Factura Venta</h3>
+                            </div>
+                            <div class="container" id="app">
+                                <div class="logo">
+                                    <h1>Logo</h1><img src="{{ asset('img/logo2.png') }}" alt="Logo" />
+                                </div>
+                                <div class="company">
+                                    <div class="phone"><a href="{{ url('tel:1-555-555-1234') }}">(555) 555-1234</a>
+                                    </div>
+                                    <div class="email"><a
+                                            href="{{ url('mailto:zayrodisfraces@email.com') }}">zayrodisfraces@email.com</a>
+                                    </div>
+                                    <div class="address"><a href="{{ url('https://goo.gl/maps') }}"
+                                            target="_blank">Bogotá</a></div>
+                                </div>
+                                <div class="invoice-info">
+                                    <div class="invoice-number">Factura: #AB00022</div>
+                                    <div class="date-created">Fecha creada: 28/03/23</div>
+                                </div>
+                                <div class="invoice-due">
+                                    <div class="total-due">Precio Total: &#65284;<script> totalDue | currency</script></div>
+                                    <div class="date-due">Fecha Pago: 29/03/23</div>
+                                </div>
+                                <div class="table invoice-list">
+                                    <div class="th tr">
+                                        <div class="td">Producto</div>
+                                        <div class="td">Precio</div>
+                                        <div class="td">Cantidad</div>
+                                        <div class="td">Precio</div>
+                                        <div class="td th-remove"></div>
+                                    </div>
+                                    <div class="tr item" v-for="(item, index) in items">
+                                        <div class="td">
+                                            <input v-model="item.name" />
+                                        </div>
+                                        <div class="td">&#65284;
+                                            <input type="number" v-model="item.cost" />
+                                        </div>
+                                        <div class="td">
+                                            <input type="number" v-model="item.quantity" />
+                                        </div>
+                                        <div class="td">
+                                            &#65284;<script> (item . cost * item . quantity) | currency</script></div>
+                                        <div class="td">
+                                            <div class="remove" @click="removeItem(index)">✕</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-item">
+                                    <button @click="addItem">&#43; Agregar nuevo producto</button>
+                                </div>
+                                <div class="invoice-total">
+                                    <div class="sub-total">Sub-Total: &#65284;<script> subTotal
+                                        </script></div>
+                                    <div class="tax">IVA: &#65284;<script> salesTax | currency</script></div>
+                                    <div class="total">Total: &#65284;<script> totalDue | currency</script></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        </main>
+        <div class="footer">
+            <div class="word">
+                <p>Zayro System © 2023</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
+    <script src="{{ asset('js/factura.js') }}"></script>
+</body>
+
+</html>
