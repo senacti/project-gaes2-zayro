@@ -1,0 +1,22 @@
+SCRIPT CONSULTAS GAES #2
+________________________________________________________________________
+
+1.SELECT p.ID_PRODUCTO, p.NOMBRE_DISFRAZ, a.ID_ACCESORIO, a.ACCESORIOS
+FROM producto p
+JOIN producto_accesorios pa ON p.ID_PRODUCTO = pa.ID_PRODUCTO
+JOIN accesorios a ON pa.ID_ACCESORIO = a.ID_ACCESORIO;  
+__________________________________________________________________________ 
+
+2.SELECT u.ID_USUARIO, u.NOMBRE, u.E_MAIL, u.TELEFONO_1, COUNT(rv.ID_RECIBO_VENTA) AS TOTAL_VENTAS
+FROM usuario u
+LEFT JOIN recibo_venta rv ON u.ID_USUARIO = rv.ID_USUARIO
+GROUP BY u.ID_USUARIO, u.NOMBRE, u.E_MAIL, u.TELEFONO_1
+ORDER BY TOTAL_VENTAS DESC;
+_______________________________________________________________________ 
+
+3.SELECT p.ID_PRODUCTO, p.NOMBRE_DISFRAZ, s.FECHA_SALIDA, e.FECHA_ENTRADA
+FROM producto p
+LEFT JOIN salida_producto s ON p.ID_PRODUCTO = s.ID_PRODUCTO
+LEFT JOIN entrada_producto e ON p.ID_PRODUCTO = e.ID_PRODUCTO
+ORDER BY p.NOMBRE_DISFRAZ;
+_______________________________________________________________________ 
