@@ -1,50 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndexController;
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/clientes', [DashboardController::class, 'clientes'])->name('clientes');
+    Route::get('/pedidos', [DashboardController::class, 'pedidos'])->name('pedidos');
+    Route::get('/vendedores', [DashboardController::class, 'vendedores'])->name('vendedores');
+    Route::get('/marketing', [DashboardController::class, 'marketing'])->name('marketing');
+    Route::get('/inventario', [DashboardController::class, 'inventario'])->name('inventario');
+    Route::get('/informes', [DashboardController::class, 'informes'])->name('informes');
+    Route::get('/factura', [DashboardController::class, 'factura'])->name('factura');
+    Route::get('/carrito', [DashboardController::class, 'carrito'])->name('carrito');
 });
 
-Route::get('/inventario', function () {
-    return view('inventario');
-});
-
-Route::get('/informes', function () {
-    return view('informes');
-});
-
-Route::get('/factura', function () {
-    return view('factura');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
-Route::get('/carrito', function () {
-    return view('carrito');
-});
-
-Route::get('/500', function () {
-    return view('500');
-});
-
-Route::get('/404', function () {
-    return view('404');
-});
+Route::get('/500', [IndexController::class, 'error500']);
+Route::get('/404', [IndexController::class, 'error404']);
+Route::get('/', [IndexController::class, 'index'])->name('inicio');
+Route::get('/disfraces', [IndexController::class, 'disfraces'])->name('disfraces');

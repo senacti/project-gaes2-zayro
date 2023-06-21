@@ -1,42 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+<head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @include('partials.head')
+    @yield('head')
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts --> 
     @viteReactRefresh
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <input type="checkbox" id="nav-toggle">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+    @include('partials.sidebar')
+    <div class="main-wrapper">
+        <div class="main-content">
+            <header>
+                <img src="{{ asset('img/logo2.png') }}" alt="logo zayro disfraces" width="80px"
+                    style="background-color:white; border-radius: 20px; margin-left: 50px;">
+                <h2 class="heading" id="dashboard">
+                    @yield('page-title')
+                </h2>
+                <label for="nav-toggle">
+                    <span class="fas fa-bars"></span>
+                </label>
 
-                    </ul>
+                <div class="search">
+                    <div class="search-rotate">
+                        <div class="icon"></div>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="Buscar" id="mysearch" autocomplete="off"
+                            onkeydown="display(this)">
+                    </div>
+                </div>
 
-                    <!-- Right Side Of Navbar -->
+                <div class="collapse navbar-collapse user-wrapper" id="navbarSupportedContent">
+
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -51,15 +54,16 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -70,12 +74,22 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </header>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <main>
+                @yield('content')
+            </main>
+
+            <div class="footer">
+                <div class="word">
+                    <p>Zayro System © 2023</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    @yield('scripts')
+    <script src="{{ asset('js/dashboard/app.js') }}"></script>
 </body>
+
 </html>

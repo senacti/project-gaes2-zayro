@@ -1,0 +1,152 @@
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+header .header-menu {
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+header .header-inner {
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    background-color: var(--main-5th);
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
+
+header .nav-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    margin: 12px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+header .nav-btn.nav-slider {
+    float: left;
+}
+
+header .nav-btn.search {
+    display: none;
+}
+
+header .nav-btn i {
+    vertical-align: middle;
+}
+
+header .header-login {
+    display: inline-block;
+    overflow: hidden;
+}
+
+header .header-search {
+    position: relative;
+    margin-right: 0;
+}
+
+header .header-search .search {
+    display: block;
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+}
+
+header .header-search .search i {
+    position: absolute;
+    right: 10px;
+    color: #616267;
+    font-size: 28px;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+
+header .header-search .search i img {
+    max-width: 100%;
+    max-width: 100%;
+    border-color: var(--main-5th);
+}
+
+header .header-search .search input[type="search"] {
+    width: 100%;
+    height: 34px;
+    color: #616267;
+    font-size: 16px;
+    outline: none;
+    border-radius: 10px 40px 40px 10px;
+    border-color: white;
+    background-color: var(--main-1st);
+}
+
+header .header-search .search ::-webkit-input-placeholder {
+    color: #616267;
+    font-family: 'Lemonada', cursive;
+}
+
+header .header-search .search ::-moz-placeholder {
+    color: #616267;
+    font-family: 'Lemonada', cursive;
+}
+
+header .header-search .search :-moz-placeholder {
+    color: #616267;
+    font-family: 'Lemonada', cursive;
+}
+
+header .header-search .search :-ms-input-placeholder {
+    color: #616267;
+    font-family: 'Lemonada', cursive;
+}
+
+
+@media only screen and (max-width: 768px) {
+    header .header-search {
+        display: none;
+    }
+
+    .navtitle {
+        display: none;
+    }
+
+    #title {
+        color: var(--main-1st);
+        font-size: 13px;
+    }
+
+    header .header-menu {
+        margin: auto 5px;
+        text-align: center;
+    }
+
+    .header-login {
+        position: absolute;
+        margin-left: 5px;
+        margin-right: 5px;
+        right: 5%;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    header .header-inner {
+        padding: 0 12px;
+        text-align: center;
+    }
+
+    header .nav-btn {
+        background-color: rgba(0, 0, 0, 0.175);
+    }
+
+}

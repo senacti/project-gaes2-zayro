@@ -14,7 +14,7 @@
 <body>
     <header id="site-header">
         <div class="container">
-            <h1>Carrito de compras <span>[</span> <em><a href="{{ url('/') }}" target="_blank">Zayro</a></em><span
+            <h1>Carrito<span>[</span> <em><a href="{{ url('/') }}" target="_blank">Zayro System</a></em><span
                     class="last-span is-open">]</span></h1>
         </div>
     </header>
@@ -25,7 +25,7 @@
             <article class="product">
                 <header>
                     <a class="remove">
-                        <img src="{{ asset('img/carrusel4.webp') }}" alt="">
+                        <img src="{{ asset('https://ik.imagekit.io/Bc/carrusel4.webp') }}" alt="">
 
                         <h3>Eliminar producto</h3>
                     </a>
@@ -59,7 +59,7 @@
             <article class="product">
                 <header>
                     <a class="remove">
-                        <img src="{{ asset('img/carrusel7.webp') }}" alt="">
+                        <img src="{{ asset('https://ik.imagekit.io/Bc/carrusel7.webp') }}" alt="">
 
                         <h3>Eliminar producto</h3>
                     </a>
@@ -94,7 +94,7 @@
             <article class="product">
                 <header>
                     <a class="remove">
-                        <img src="{{ asset('img/ninos.webp') }}" alt="">
+                        <img src="{{ asset('https://ik.imagekit.io/Bc/ninos.webp') }}" alt="">
 
                         <h3>Eliminar producto</h3>
                     </a>

@@ -1,55 +1,15 @@
 
-const search_js = document.getElementById("searchh");
-search_js.addEventListener("keypress", function onEvent(event) {
-  if (event.key === "Enter") {
-    document.getElementById("search_img").click();
-  }
-});
-/* Dropdown */
-
-$(".dropdown-toggle").on("click", function (e) {
-  e.stopPropagation();
-  e.preventDefault();
-
-  var self = $(this);
-  if (self.is(".disabled, :disabled")) {
-    return false;
-  }
-  self.parent().toggleClass("open");
-});
-
-$(document).on("click", function (e) {
-  if ($(".dropdown").hasClass("open")) {
-    $(".dropdown").removeClass("open");
-  }
-});
-
-$(".nav-btn.nav-slider").on("click", function () {
-  $(".overlay").show();
-  $("nav").toggleClass("open");
-});
-
-$(".overlay").on("click", function () {
-  if ($("nav").hasClass("open")) {
-    $("nav").removeClass("open");
-  }
-  $(this).hide();
-});
-
-/*
-! CARRUSEL */
 $(function () {
   $('.bxslider').bxSlider({
     mode: 'horizontal',
     captions: false,
-    slideWidth: 1920, // tamaño de slider
+    slideWidth: 5220, // tamaño de slider
     auto: true, // para que sea automatico
     keyboardEnabled: true, // para que puedas cambiar con
     speed: 500,
     pause: 10000,
   });
 });
-
 
 Vue.config.devtools = true;
 
@@ -134,50 +94,13 @@ const app = new Vue({
   el: '#app'
 });
 
-// Plugin options and our code
-$("#modal_trigger").leanModal({
-  top: 100,
-  overlay: 0.6,
-  closeButton: ".modal_close"
-});
-
-$(function () {
-  // Calling Login Form
-  $("#login_form").click(function () {
-    $(".social_login").hide();
-    $(".user_login").show();
-    return false;
-  });
-
-  // Calling Register Form
-  $("#register_form").click(function () {
-    $(".social_login").hide();
-    $(".user_register").show();
-    $(".header_title").text('Registrarse');
-    return false;
-  });
-
-  // Going back to Social Forms
-  $(".back_btn").click(function () {
-    $(".user_login").hide();
-    $(".user_register").hide();
-    $(".social_login").show();
-    $(".header_title").text('Iniciar Sesión');
-    return false;
-  });
-});
-
-
-
-// !PRODUCT SLIDER 
-
 const slideWidth = 30;
 
 const _items = [
   {
     player: {
       title: 'Camuflaje Militar',
-      image: 'img/carrusel3.webp'
+      image: 'https://ik.imagekit.io/Bc/carrusel3.webp'
     }
   },
 
@@ -185,7 +108,7 @@ const _items = [
   {
     player: {
       title: "Miles Morales - Hombre araña",
-      image: 'img/carrusel4.webp'
+      image: 'https://ik.imagekit.io/Bc/carrusel4.webp'
     }
   },
 
@@ -193,7 +116,7 @@ const _items = [
   {
     player: {
       title: 'Monstruo de Frankenstein',
-      image: 'img/carrusel5.webp'
+      image: 'https://ik.imagekit.io/Bc/carrusel5.webp'
     }
   },
 
@@ -201,7 +124,7 @@ const _items = [
   {
     player: {
       title: 'Aprendiz de Bruja',
-      image: 'img/carrusel6.webp'
+      image: 'https://ik.imagekit.io/Bc/carrusel6.webp'
     }
   },
 
@@ -209,11 +132,9 @@ const _items = [
   {
     player: {
       title: 'Espantapájaros',
-      image: 'img/carrusel7.webp'
+      image: 'https://ik.imagekit.io/Bc/carrusel7.webp'
     },
   }];
-
-
 
 
 const length = _items.length;
@@ -232,7 +153,6 @@ const createItem = (position, idx) => {
     player: _items[idx].player
   };
 
-
   switch (position) {
     case length - 1:
     case length + 1:
@@ -244,7 +164,6 @@ const createItem = (position, idx) => {
       item.styles = { ...item.styles, opacity: 0 };
       break;
   }
-
 
   return item;
 };
@@ -260,8 +179,6 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
       React.createElement("div", { className: "carousel-slide-item__body" }, /*#__PURE__*/
         React.createElement("h4", null, item.player.title), /*#__PURE__*/
         React.createElement("p", null, item.player.desc))));
-
-
 
 };
 
@@ -322,9 +239,6 @@ const Carousel = () => {
                 activeIdx: activeIdx
               })))), /*#__PURE__*/
 
-
-
-
         React.createElement("button", { className: "carousel__btn carousel__btn--next", onClick: () => nextClick() }, /*#__PURE__*/
           React.createElement("i", { className: "carousel__btn-arrow carousel__btn-arrow--right" })), /*#__PURE__*/
 
@@ -335,11 +249,6 @@ const Carousel = () => {
               onClick: () => handleDotClick(i),
               className: i === activeIdx ? 'dot active' : 'dot'
             }))))));
-
-
-
-
-
 
 };
 

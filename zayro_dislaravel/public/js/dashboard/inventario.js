@@ -1,87 +1,3 @@
-let welcome;
-let date = new Date();
-let hour = date.getHours();
-let minute = date.getMinutes();
-let second = date.getSeconds();
-if (minute < 10) {
-	minute = "0" + minute;
-}
-if (second < 10) {
-	second = "0" + second;
-}
-if (hour < 12) {
-	welcome = "Buenos dias!";
-} else if (hour < 17) {
-	welcome = "Buenas tardes!";
-} else {
-	welcome = "Buenas noches!";
-}
-
-function display(val) {
-	if (event.key === 'Enter') {
-		if ((val.value).length > 0) {
-			console.log(val.value)
-			customAlert(`Buscando: "${val.value}"`, 3500)
-		} else {
-			customWarn('Escribe lo que deseas buscar', 1500)
-		}
-	}
-}
-
-
-$(document).ready(function () {
-	const body = document.querySelector('body');
-	const toggled = document.getElementById('toggle');
-	const media = window.matchMedia("(min-width:700px)")
-
-	toggled.onclick = function () {
-		body.classList.toggle('light');
-		toggled.classList.toggle('active')
-	}
-	if (media.matches) {
-		console.log(true)
-		$('#dashboard').mouseenter(function () {
-			this.innerHTML = `¡${welcome}`;
-		});
-		$('#dashboard').mouseleave(function () {
-			this.innerHTML = "Panel de control";
-		});
-		$('#kleenpulse').mouseenter(function () {
-			this.innerHTML = "Bienvenido";
-		});
-		$('#kleenpulse').mouseleave(function () {
-			this.innerHTML = "Zayro System";
-		});
-	} else {
-		console.log(false)
-	}
-})
-
-function customAlert(msg, duration) {
-	var styler = document.createElement("div");
-	styler.className = 'dis-wrap'
-
-	styler.innerHTML = "<h1 class='display'>" + msg + "</h1>";
-	setTimeout(function () {
-		styler.parentNode.removeChild(styler);
-	}, duration);
-	document.body.appendChild(styler);
-}
-
-function customWarn(msg, duration) {
-	var styler = document.createElement("div");
-	styler.className = 'dis-warn'
-
-	styler.innerHTML = "<h1 class='display'>" + msg + "</h1>";
-	setTimeout(function () {
-		styler.parentNode.removeChild(styler);
-	}, duration);
-	document.body.appendChild(styler);
-}
-
-
-/*
-! Inventario React */
 
 class ProductCard extends React.Component {
 	constructor(props) {
@@ -131,12 +47,8 @@ class ProductCard extends React.Component {
 				React.createElement("p", { className: "name" }, this.state.name), /*#__PURE__*/
 				React.createElement("img", { src: this.state.imageURL }), /*#__PURE__*/
 				React.createElement("p", { className: "price" }, "from ", /*#__PURE__*/React.createElement("span", null, "$", this.state.price))));
-
-
 	}
 }
-
-
 
 class NewItemTab extends React.Component {
 	constructor() {
@@ -149,8 +61,6 @@ class NewItemTab extends React.Component {
 				imageURL: false
 			}
 		};
-
-
 	}
 
 	checkForm() {
@@ -251,11 +161,6 @@ class NewItemTab extends React.Component {
 				React.createElement("div", { className: "newItem-preview" }, /*#__PURE__*/
 					React.createElement("h1", null, "Mostrar"), /*#__PURE__*/
 					React.createElement(ProductCard, { product: this.props.formData }))));
-
-
-
-
-
 	}
 }
 
@@ -270,8 +175,6 @@ const ProductTableRow = props => {
 			React.createElement("td", null, props.product.category), /*#__PURE__*/
 			React.createElement("td", null, /*#__PURE__*/React.createElement("a", { target: "_blank", href: props.product.imageURL }, "Ver")), /*#__PURE__*/
 			React.createElement("td", { className: "editButton" }, "editar")));
-
-
 };
 
 class ProductsTab extends React.Component {
@@ -297,8 +200,6 @@ class ProductsTab extends React.Component {
 					React.createElement("th", null, "Categoria"), /*#__PURE__*/
 					React.createElement("th", null, "Imagen"))];
 
-
-
 			for (let i = 0; i < LOPlength; i++) {
 				rows.push( /*#__PURE__*/React.createElement(ProductTableRow, { product: listOfProducts[i] }));
 			}
@@ -314,9 +215,6 @@ class ProductsTab extends React.Component {
 				React.createElement("p", null, "Mostrando todos los productos disponibles:"), /*#__PURE__*/
 				React.createElement("table", { className: "productTable" },
 					this.renderTableRows(this.props.inventory))));
-
-
-
 	}
 }
 
@@ -347,8 +245,6 @@ class MyRouter extends React.Component {
 		return /*#__PURE__*/(
 			React.createElement("div", { className: "MyRouter" },
 				this.route(this.props.activeTab)));
-
-
 	}
 }
 
@@ -361,17 +257,12 @@ const Sidebar = props => {
 				React.createElement("li", { className: props.activeTab == 1 ? 'active' : '', onClick: () => props.changeTab(1) }, "Productos"), /*#__PURE__*/
 				React.createElement("li", { className: props.activeTab == 2 ? 'active' : '', onClick: () => props.changeTab(2) }, "Categorias"), /*#__PURE__*/
 				React.createElement("li", { className: props.activeTab == 3 ? 'active' : '', onClick: () => props.changeTab(3) }, "Archivar producto"))));
-
-
-
 };
 
 const Footer = () => {
 	return /*#__PURE__*/(
 		React.createElement("div", { className: "Footer" }, /*#__PURE__*/
 			React.createElement("p", null, "Current work-in-progress for an e-commerce dashboard.")));
-
-
 };
 
 
@@ -390,7 +281,6 @@ class InventoryManagementApp extends React.Component {
 				}
 			},
 
-
 			newItemForm: {
 				category: '',
 				name: '',
@@ -398,8 +288,6 @@ class InventoryManagementApp extends React.Component {
 				imageURL: ''
 			}
 		};
-
-
 	}
 
 	changeActiveTab(index) {
@@ -440,14 +328,9 @@ class InventoryManagementApp extends React.Component {
 						addNewProduct: this.addNewProduct.bind(this)
 					})), /*#__PURE__*/
 
-
 				React.createElement(Footer, null)));
-
-
 	}
 }
-
-
 
 ReactDOM.render( /*#__PURE__*/
 	React.createElement(InventoryManagementApp, null),
