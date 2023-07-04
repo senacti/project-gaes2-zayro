@@ -2,7 +2,7 @@
 <p align="center"><img width="245" src="https://github.com/senauti/project-gaes2-zayro/blob/main/01-Trimestre%201/logo1.png"></p>
 
 ## Objetivo general 🎯
-
+Desarrollar un software integral que aborde los desafíos que enfrenta la empresa (Zayro disfraces). Propiciando una interconexión y sincronización eficiente, centrándose en la organización del inventario, agilizando el proceso de facturación, optimizando el seguimiento de pedidos y fortaleciendo  las estrategias de marketing.
 
 ## Objetivos específicos 🎯
 - Desarrollar una funcionalidad en el software que mantenga un registro preciso y actualizado del inventario, incluyendo detalles como descripción, tallas, colores, precios, entre   otros. Implementando herramientas de gestión de inventario que agilicen la identificación de productos agotados o con cantidades bajas, posibilitando una reposición oportuna.
