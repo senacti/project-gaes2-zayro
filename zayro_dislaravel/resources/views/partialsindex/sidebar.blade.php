@@ -13,10 +13,11 @@
 </div>
 <ul class="nav-categories ul-base">
     <li>
-        <a href="#">Inicio</a>
+        <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Inicio</a>
     </li>
-    <li><a href="#">Disfraces</a></li>
-    <li><a href="#">Zayro</a></li>
+    <li><a href="{{ url('/disfraces') }}" class="{{ request()->is('disfraces') ? 'active' : '' }}">Disfraces</a></li>
+    <li><a href="{{ url('/nosotros')}}" class="{{ request()->is('nosotros') ? 'active' : '' }}">Nosotros</a></li>
+    <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 </ul>
 <ul class="social ul-base">
     <li>

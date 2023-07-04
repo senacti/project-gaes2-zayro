@@ -8,10 +8,6 @@
 @section('page-title', 'Panel de Control')
 
 @section('content')
-    <div class="switch" id="switch">
-        <div id="toggle">
-        </div>
-    </div>
     <div class="cards">
         <div class="card-single">
             <div>
@@ -180,7 +176,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 
@@ -196,7 +191,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 
@@ -211,7 +205,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 
@@ -226,7 +219,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 
@@ -241,7 +233,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 
@@ -256,7 +247,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 
@@ -271,7 +261,6 @@
                         <div class="contact">
                             <span class="fas fa-user-circle"></span>
                             <span class="fas fa-envelope"></span>
-                            <span class="fas fa-flag"></span>
                         </div>
                     </div>
 

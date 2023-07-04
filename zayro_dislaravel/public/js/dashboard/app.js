@@ -1,16 +1,19 @@
 let welcome;
-let date = new Date();
-let hour = date.getHours();
+const date = new Date();
+const hour = date.getHours();
 let minute = date.getMinutes();
 let second = date.getSeconds();
+
 if (minute < 10) {
     minute = "0" + minute;
 }
+
 if (second < 10) {
     second = "0" + second;
 }
+
 if (hour < 12) {
-    welcome = "Buenos dias!";
+    welcome = "Buenos días!";
 } else if (hour < 17) {
     welcome = "Buenas tardes!";
 } else {
@@ -19,61 +22,61 @@ if (hour < 12) {
 
 function display(val) {
     if (event.key === 'Enter') {
-        if ((val.value).length > 0) {
-            console.log(val.value)
-            customAlert(`Buscando: "${val.value}"`, 3500)
+        if (val.value.length > 0) {
+            console.log(val.value);
+            customAlert(`Buscando: "${val.value}"`, 3500);
         } else {
-            customWarn('Escribe lo que deseas buscar', 1500)
+            customWarn('Escribe lo que deseas buscar', 1500);
         }
     }
 }
 
-$(document).ready(function () {
-    const body = document.querySelector('body');
-    const toggled = document.getElementById('toggle');
-    const media = window.matchMedia("(min-width:700px)")
+$(document).ready(function () { 
+    const media = window.matchMedia("(min-width:700px)");
 
-    toggled.onclick = function () {
-        body.classList.toggle('light');
-        toggled.classList.toggle('active')
-    }
     if (media.matches) {
-        console.log(true)
+        console.log(true);
+
         $('#dashboard').mouseenter(function () {
-            this.innerHTML = `¡${welcome}`;
+            this.innerHTML = `¡${welcome}!`;
         });
+
         $('#dashboard').mouseleave(function () {
-            this.innerHTML = "Panel de control";
+                this.innerHTML = "Zayro Disfraces";
         });
+
         $('#kleenpulse').mouseenter(function () {
             this.innerHTML = "Bienvenido";
         });
+
         $('#kleenpulse').mouseleave(function () {
             this.innerHTML = "Zayro System";
         });
     } else {
-        console.log(false)
+        console.log(false);
     }
-})
+});
 
 function customAlert(msg, duration) {
-    var styler = document.createElement("div");
-    styler.className = 'dis-wrap'
-
+    const styler = document.createElement("div");
+    styler.className = 'dis-wrap';
     styler.innerHTML = "<h1 class='display'>" + msg + "</h1>";
+
     setTimeout(function () {
         styler.parentNode.removeChild(styler);
     }, duration);
+
     document.body.appendChild(styler);
 }
 
 function customWarn(msg, duration) {
-    var styler = document.createElement("div");
-    styler.className = 'dis-warn'
-
+    const styler = document.createElement("div");
+    styler.className = 'dis-warn';
     styler.innerHTML = "<h1 class='display'>" + msg + "</h1>";
+
     setTimeout(function () {
         styler.parentNode.removeChild(styler);
     }, duration);
+
     document.body.appendChild(styler);
 }

@@ -19,18 +19,19 @@
             @else
                 <a id="navbarDropdown" class="nav-link dropdown-toggle subtitle" href="#" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+                    {{ Auth::user()->NOMBRE }}
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    {{-- <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                         {{ __('Salir') }}
-                    </a>
+                    </a> --}}
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
+                        <button type="submit">Salir</button>
                     </form>
                 </div>
 
@@ -43,11 +44,11 @@
     </div>
 
     <div class="header-menu">
-        <h2 id="title" onclick="location.href={{ url('/') }}">ZAYRO <span class="subtitle">DISFRACES</span>
+        <h2 id="title" onclick="location.href='/'">ZAYRO <span class="subtitle">DISFRACES</span>
         </h2>
     </div>
 
-    @yield('carrito')
+    @include('partialsindex.carrito')
 
     <div class="header-search">
         <div class="search">

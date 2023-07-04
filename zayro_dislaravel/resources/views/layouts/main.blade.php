@@ -26,9 +26,13 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbar-primary-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#" class="active">INICIO</a></li>
-                        <li><a href="#disfraces-tab">DISFRACES</a></li>
-                        <li><a href="#footer-sect">ZAYRO</a></li>
+                        <li><a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">INICIO</a>
+                        </li>
+                        <li><a href="{{ url('/disfraces') }}"
+                                class="{{ request()->is('disfraces') ? 'active' : '' }}">DISFRACES</a></li>
+                        <li><a href="{{ url('/nosotros') }}"
+                                class="{{ request()->is('nosotros') ? 'active' : '' }}">NOSOTROS</a></li>
+                        <li><a href="{{ url('/dashboard') }}">DASHBOARD</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,9 +48,22 @@
     <footer class="footer-distributed" id="footer-sect">
         @include('partialsindex.footer')
     </footer>
+    {{-- <script>
+        setTimeout(function() {
+            $("#modal_trigger").click();
+        }, 5000);
+    </script> --}}
+    {{-- @if (isset($redirect) && $redirect)
+        <script>
+            setTimeout(function() {
+                $("#modal_trigger").click();
+            }, 5000);
+        </script>
+    @endif --}}
 
     @include('partialsindex.scripts')
     @yield('scripts')
+    <div class="overlay"></div>
 </body>
 
 </html>

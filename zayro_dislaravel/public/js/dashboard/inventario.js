@@ -262,7 +262,7 @@ const Sidebar = props => {
 const Footer = () => {
 	return /*#__PURE__*/(
 		React.createElement("div", { className: "Footer" }, /*#__PURE__*/
-			React.createElement("p", null, "Current work-in-progress for an e-commerce dashboard.")));
+			React.createElement("p", null, "Inventario de productos")));
 };
 
 

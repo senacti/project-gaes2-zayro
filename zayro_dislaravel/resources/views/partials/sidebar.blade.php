@@ -1,72 +1,75 @@
 <div class="sidebar">
     <div class="sidebar-brand">
-        <h2><span><i class="fas fa-mask"></i></span><span id="kleenpulse">Zayro System</span></h2>
+        <h2><span><i class="fas fa-mask"></i></span><span class="sidebar-title" id="kleenpulse">Zayro System</span></h2>
     </div>
     <div class="sidebar-menu">
         <ul>
             <li>
-                <a href="{{ url('/dashboard') }}" class="{{ request()->is('dashboard') ? 'active' : '' }}"><span
-                        class="fas fa-cubes"></span>
+                <a href="{{ url('/dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">
+                    <span class="fas fa-cubes"></span>
                     <span>Panel de control</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="{{ request()->is('clientes') ? 'active' : '' }}"><span
-                        class="fas fa-users"></span>
-                    <span>Clientes</span>
+                <a href="{{ url('/usuarios') }}" class="{{ Request::is('usuarios*') ? 'active' : '' }}">
+                    <span class="fas fa-users"></span>
+                    <span>Usuarios</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('/informes') }}" class="{{ request()->is('informes') ? 'active' : '' }}"><span
-                        class="fas fa-clipboard-list"></span>
+                <a href="{{ url('/informes') }}" class="{{ Request::is('informes*') ? 'active' : '' }}">
+                    <span class="fas fa-clipboard-list"></span>
                     <span>Informes</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="{{ request()->is('pedidos') ? 'active' : '' }}"><span
-                        class="fas fa-shopping-bag"></span>
+                <a href="{{ url('/pedidos') }}" class="{{ Request::is('pedidos*') ? 'active' : '' }}">
+                    <span class="fas fa-shopping-bag"></span>
                     <span>Pedidos</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('/inventario') }}" class="{{ request()->is('inventario') ? 'active' : '' }}"><span
-                        class="fas fa-table"></span>
-                    <span>Inventario</span>
+                <a href="{{ url('/productos') }}" class="{{ Request::is('productos*') ? 'active' : '' }}">
+                    <span class="fas fa-table"></span>
+                    <span>Productos</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('/factura') }}" class="{{ request()->is('factura') ? 'active' : '' }}"><span
-                        class="fas fa-receipt"></span>
+                <a href="{{ url('/factura') }}" class="{{ Request::is('factura*') ? 'active' : '' }}">
+                    <span class="fas fa-receipt"></span>
                     <span>Facturación</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="{{ request()->is('vendedores') ? 'active' : '' }}"><span
-                        class="fa fa-user-circle"></span>
+                <a href="{{ url('/vendedores') }}" class="{{ Request::is('vendedores*') ? 'active' : '' }}">
+                    <span class="fa fa-user-circle"></span>
                     <span>Vendedores</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="{{ request()->is('marketing') ? 'active' : '' }}"><span
-                        class="fas fa-calendar-plus"></span>
+                <a href="{{ url('/marketing') }}" class="{{ Request::is('marketing*') ? 'active' : '' }}">
+                    <span class="fas fa-calendar-plus"></span>
                     <span>Marketing</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('/carrito') }}"><span class="fas fa-shopping-cart"></span>
+                <a href="{{ url('/carrito') }}" class="{{ Request::is('carrito*') ? 'active' : '' }}">
+                    <span class="fas fa-shopping-cart"></span>
                     <span>Carrito</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('/') }}"><span class="fas fa-house-user"></span>
-                    <span>Página de inicio</span>
+                <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'active' : '' }}">
+                    <span class="fas fa-house-user"></span>
+                    <span>Inicio</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><span
-                        class="fas fa-sign-out-alt"></span>
+                    document.getElementById('logout-form').submit();"
+                >
+                    <span class="fas fa-sign-out-alt"></span>
                     <span>{{ __('Salir') }}</span>
                 </a>
             </li>

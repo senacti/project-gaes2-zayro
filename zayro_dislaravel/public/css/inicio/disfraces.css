@@ -1,112 +1,24 @@
 
-.mini {
-    position: fixed;
-    top: 76px;
-    right: 225px;
-    background: #FFF;
-    padding: 40px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease 0.2s;
-}
 
-.mini.visible {
-    padding: 25px;
-    opacity: 1;
-    visibility: visible;
-}
-
-.mini .products {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.mini p {
-    font-size: 11px;
-    display: block;
-    line-height: 20px;
-}
-
-.cart {
-    position: relative;
-    float: right;
-    margin-right: 50px;
-    height: 20px;
-    line-height: 70px;
-    font-size: 28px;
-    height: 100%;
-    cursor: pointer;
-}
-
-.cart span {
-    height: 100%;
-    float: left;
-    margin-right: 20px;
-    opacity: 1;
-    color: #222228;
-    font-size: 18px;
-    font-family: "Nunito", sans-serif;
-}
-
-.cart span.updateQuantity:before,
-.cart span.updateQuantity:after {
-    top: 0;
-    bottom: 0;
-    opacity: 1;
-    width: 30px;
-    transition: all 0.2s ease, top 0.3s ease 0.4s, bottom 0.3s ease 0.4s;
-}
-
-.cart span.update {
-    transition: color 0.2s ease 0.6s;
-    color: #000;
-}
-
-.cart span.update:before {
-    top: -30px;
-    width: 30px;
-    opacity: 1;
-    transition: all 0.2s ease, top 0.3s ease 0.4s, bottom 0.3s ease 0.4s;
-}
-
-.cart span.update:after {
-    top: 30px;
-    width: 30px;
-    opacity: 1;
-    transition: all 0.2s ease, top 0.3s ease 0.4s, bottom 0.3s ease 0.4s;
-}
-
-.cart span:before,
-.cart span:after {
-    content: "";
-    position: absolute;
-    width: 0px;
-    height: 2px;
-    background-color: #0b0b0b;
-    left: -10px;
-    right: 40px;
-    top: 2px;
-    bottom: 0;
-    margin: auto;
-}
 
 .container {
     padding: 20px;
-    padding-top: 100px;
-    text-align: center;
+    text-align: center; 
 }
 
 .container .product {
     position: relative;
     overflow: hidden;
     width: 200px;
-    height: 280px;
+    height: 330px;
     display: inline-block;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.45);
 }
 
 .container .product img {
+    width: 200px;
+    height: 150px;
     position: relative;
     transition: all 0.2s ease;
     -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 70%);
@@ -128,7 +40,7 @@
     font-weight: bold;
 }
 
-.container .product .description, .container .product, .container .product, .mini p, .container .product .price {
+.container .product .description, .container .product, .container .product, .container .product .price {
     margin: 0;
     padding: 0;
 }
@@ -210,7 +122,7 @@
     height: 100vh;
     width: 400px;
     background: rgba(0, 0, 0, 0.9);
-    top: 70px;
+    top: 0;
     right: -100%;
     transition: all 0.3s ease;
     padding: 30px;

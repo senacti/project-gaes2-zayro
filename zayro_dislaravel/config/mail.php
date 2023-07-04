@@ -44,6 +44,8 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'dsn' => env('MAIL_DSN'), 'mailgun+smtp://postmaster@sandboxfa1a857ac5f2458cb6241395770a1d25.mailgun.org:d1948564a246ada62baf4a3a683aab37-135a8d32-7ff32b39@default
+            '
         ],
 
         'ses' => [

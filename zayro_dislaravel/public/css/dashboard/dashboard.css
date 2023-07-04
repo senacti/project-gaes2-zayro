@@ -1,7 +1,3 @@
-main {
-    margin-top: 83px;
-}
-
 .recent-grid {
     display: grid;
     grid-gap: 2rem;
@@ -9,50 +5,10 @@ main {
 
 }
 
-
-/* =========COUNTER=========== */
-
-@keyframes income {
-    from {
-        --num: 0;
-    }
-
-    to {
-        --num: 600;
-    }
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
 }
-
-@keyframes customer {
-    from {
-        --num: 0;
-    }
-
-    to {
-        --num: 1334;
-    }
-}
-
-@keyframes project {
-    from {
-        --num: 0;
-    }
-
-    to {
-        --num: 6969;
-    }
-}
-
-@keyframes order {
-    from {
-        --num: 0;
-    }
-
-    to {
-        --num: 5124;
-    }
-}
-
-/* =========TABLE=========== */
 
 table {
 

@@ -24,7 +24,12 @@ class IndexController extends Controller
 
     public function disfraces()
     {
-        return view('disfraces');
+        return view('inicio.disfraces');
+    }
+
+    public function nosotros()
+    {
+        return view('inicio.nosotros');
     }
 
 }

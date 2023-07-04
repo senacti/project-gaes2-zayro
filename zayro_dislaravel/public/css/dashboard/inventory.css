@@ -1,0 +1,50 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: .5rem;
+    text-align: left;
+}
+
+th {
+    background: #f5f5f5;
+}
+
+.form {
+    margin-top: 2rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+input[type="submit"] {
+    background: #9E5DC9;
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #7A49A6;
+}
+
+a, td, label {
+    color: #fff;
+}
+
+td a {
+    color: #9E5DC9;
+}

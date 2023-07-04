@@ -6,10 +6,6 @@
 @endsection
 
 @section('content')
-    <div class="switch" id="switch">
-        <div id="toggle">
-        </div>
-    </div>
     <div class="cards">
         <div class="card-single">
             <div>

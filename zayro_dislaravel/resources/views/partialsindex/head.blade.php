@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="{{ asset('css/inicio/footer.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/inicio/header.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/inicio/modal.css') }}" />
+<link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.4/css/simple-line-icons.min.css'>
 
 
 
