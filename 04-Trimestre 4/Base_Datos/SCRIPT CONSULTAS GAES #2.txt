@@ -1,13 +1,10 @@
-SCRIPT CONSULTAS GAES #2
-_______________________________________________________________________________________
-
 1.SELECT u.ID_USUARIO, u.NOMBRE, u.E_MAIL, p.id_permiso, p.permiso
-FROM usuario u
+FROM usuarios u
 JOIN roles_sistema r ON u.ID_ROL = r.ID_ROL
 JOIN roles_sistema_permisos rp ON r.ID_ROL = rp.ID_ROL
 JOIN permisos p ON rp.ID_PERMISO = p.ID_PERMISO
 WHERE u.ID_USUARIO ;
-_______________________________________________________________________________________ 
+___________ 
 
 2.SELECT
     e.`NUMERO_RADICADO_ENVIO`,
@@ -17,7 +14,7 @@ FROM
     envios e                                                                                                                   
     INNER JOIN transportadora t ON e.`ID_TRANSPORTADORA` = t.`ID_TRANSPORTADORA`
     INNER JOIN estado es ON e.`ID_ENVIO` = es.`ID_ENVIO`;	
-_______________________________________________________________________________________ 
+___________ 
 
 3.SELECT
     p.`ID_PRODUCTO`,
@@ -30,7 +27,7 @@ FROM
     producto p
     INNER JOIN categoria c ON p.`ID_CATEGORIA` = c.`ID_CATEGORIA`
     INNER JOIN talla t ON p.`ID_TALLA` = t.`ID_TALLA`
-_______________________________________________________________________________________ 
+___________ 
 
 4. FUNCION ALMACENADA 
 
@@ -42,7 +39,7 @@ BEGIN
     
     SELECT CONCAT('Nombre: ', u.NOMBRE, ', ID Permiso: ', GROUP_CONCAT(p.ID_PERMISO), ', Permiso: ', GROUP_CONCAT(p.PERMISO))
     INTO datosUsuario
-    FROM usuario u
+    FROM usuarios u
     JOIN roles_sistema r ON u.ID_ROL = r.ID_ROL
     JOIN roles_sistema_permisos rp ON r.ID_ROL = rp.ID_ROL
     JOIN permisos p ON rp.ID_PERMISO = p.ID_PERMISO
@@ -52,4 +49,56 @@ BEGIN
 END //
 
 DELIMITER ;
-______________________________________________________________________________________ 
+___________ 
+
+5.FUNCION ALMACENADA 2
+DELIMITER //
+
+CREATE FUNCTION ObtenerDatosProducto(IDProducto INT) RETURNS VARCHAR(255)
+BEGIN
+    DECLARE datosProducto VARCHAR(255);
+    DECLARE nombreCategoria VARCHAR(50);
+    DECLARE talla VARCHAR(10);
+    
+    SELECT p.`NOMBRE_DISFRAZ`, c.`CATEGORIA`, t.`NUMERO_TALLA`
+    INTO datosProducto, nombreCategoria, talla
+    FROM PRODUCTO p
+    INNER JOIN CATEGORIA c ON p.`ID_CATEGORIA` = c.`ID_CATEGORIA`
+    INNER JOIN TALLA t ON p.`ID_TALLA` = t.`ID_TALLA`
+    WHERE p.`ID_PRODUCTO` = IDProducto;
+    
+    SET datosProducto = CONCAT(datosProducto, ', Categoría: ', nombreCategoria, ', Talla: ', talla);
+    
+    RETURN datosProducto;
+END //
+
+DELIMITER ;
+___________
+ 
+6.PROCEDIMIENTO ALMACENADO 
+DELIMITER //
+
+CREATE PROCEDURE ObtenerDatosEnvio(IN IDEnvio INT)
+BEGIN
+    DECLARE transportadora VARCHAR(100);
+    DECLARE estado VARCHAR(100);
+    DECLARE numero_radicado VARCHAR(50);
+    
+    SELECT t.`NOMBRE_TRANSPORTADORA` INTO transportadora
+    FROM TRANSPORTADORA t
+    INNER JOIN ENVIOS e ON t.`ID_TRANSPORTADORA` = e.`ID_TRANSPORTADORA`
+    WHERE e.`ID_ENVIO` = IDEnvio;
+    
+    SELECT es.`DESCRIPCION_ESTADO` INTO estado
+    FROM ESTADO es
+    INNER JOIN ENVIOS e ON es.`ID_ENVIO` = e.`ID_ENVIO`
+    WHERE e.`ID_ENVIO` = IDEnvio;
+    
+    SELECT e.`NUMERO_RADICADO_ENVIO` INTO numero_radicado
+    FROM ENVIOS e
+    WHERE e.`ID_ENVIO` = IDEnvio;
+    
+    SELECT numero_radicado AS 'Número de Radicado', transportadora AS 'Transportadora', estado AS 'Estado';
+END //
+
+DELIMITER ;
