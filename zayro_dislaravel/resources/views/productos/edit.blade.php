@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>Editar Producto - Zayro Disfraces</title>
+    <title>Editar {{$producto->NOMBRE_DISFRAZ}} - Zayro Disfraces</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard/inventory.css') }}">
 @endsection
 
@@ -19,25 +19,30 @@
         <form method="POST" action="{{ route('productos.update', $producto->ID_PRODUCTO) }}">
             @csrf
             @method('PUT')
-            <div>
-                <label for="ID_PRODUCTO">ID:</label>
-                <input type="text" name="ID_PRODUCTO" id="id_producto" value="{{ $producto->ID_PRODUCTO }}">
-            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div>
                 <label for="nombre_disfraz">Nombre:</label>
                 <input type="text" name="NOMBRE_DISFRAZ" id="nombre_disfraz" value="{{ $producto->NOMBRE_DISFRAZ }}">
             </div>
             <div>
                 <label for="descripcion">Descripcion:</label>
-                <textarea name="DESCRIPCION" id="descripcion">{{ $producto->DESCRIPCION }}</textarea>
+                <input type="text" name="DESCRIPCION" id="descripcion" value="{{ $producto->DESCRIPCION }}">
             </div>
             <div>
                 <label for="cantidad">Cantidad:</label>
-                <textarea name="CANTIDAD" id="cantidad">{{ $producto->inventario->CANTIDAD }}</textarea>
+                <input type="number" name="CANTIDAD" id="cantidad" value="{{ $producto->inventario->CANTIDAD }}">
             </div>
             <div>
                 <label for="precio_unitario">Precio Unitario:</label>
-                <textarea name="PRECIO_UNITARIO" id="precio_unitario">{{ $producto->inventario->PRECIO_UNITARIO }}</textarea>
+                <input type="number" name="PRECIO_UNITARIO" id="precio_unitario" value="{{ $producto->inventario->PRECIO_UNITARIO }}">
             </div>
             <div>
                 <label for="id_categoria">Categoria:</label>
@@ -59,7 +64,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit">Actualizar</button>
+            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas actualizar este producto?')">Actualizar</button>
         </form>
     </div>
 @endsection

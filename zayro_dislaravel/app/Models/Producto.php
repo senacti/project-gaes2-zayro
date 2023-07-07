@@ -11,13 +11,13 @@ class Producto extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ID_PRODUCTO',
         'NOMBRE_DISFRAZ',
         'DESCRIPCION',
-        'ID_INVENTARIO',
         'ID_CATEGORIA',
         'ID_TALLA',
     ];
+
+    protected $with = ['inventario'];
 
     public function inventario()
     {

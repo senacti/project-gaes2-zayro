@@ -9,7 +9,7 @@
 .container .product {
     position: relative;
     overflow: hidden;
-    width: 200px;
+    width: 210px;
     height: 330px;
     display: inline-block;
     border-radius: 4px;
@@ -21,8 +21,8 @@
     height: 150px;
     position: relative;
     transition: all 0.2s ease;
-    -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 70%);
-    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 70%);
+    -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 0);
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 0);
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
 }
@@ -38,6 +38,7 @@
     color: #222228;
     font-size: 14px;
     font-weight: bold;
+    height: 35px;
 }
 
 .container .product .description, .container .product, .container .product, .container .product .price {
@@ -47,9 +48,9 @@
 
 .container .product .description {
     text-align: left;
-    font-size: 9px;
+    font-size: 12px;
     color: #9E5DC9;
-    max-height: 56px;
+    height: 34px;
     overflow: hidden;
 }
 

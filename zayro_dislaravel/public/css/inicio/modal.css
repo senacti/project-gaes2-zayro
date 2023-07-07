@@ -26,6 +26,28 @@
     padding: 20px;
 }
 
+#login_errors, #register_errors {
+    display: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #FBE3E4;
+    border: 1px solid #FBC2C4;
+    color: #8a1f11;
+}
+
+#login_errors .error, #register_errors .error {
+    margin-bottom: 5px;
+}
+
+#login_errors .error:last-child, #register_errors .error:last-child {
+    margin-bottom: 0;
+}
+
+#login_errors .error_title, #register_errors .error_title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .social_login .social_box {
     display: block;
     clear: both;
@@ -111,7 +133,6 @@
     color: #ED6347;
 }
 
-/* User Register Form */
 
 .user_register {
     display: none;
@@ -150,7 +171,7 @@
 
 
 #lean_overlay {
-    position: fixed;
+    position: absolute;
     z-index: 100;
     top: 0px;
     left: 0px;
@@ -167,5 +188,5 @@
     left: 45%;
     top: 60px;
     background: #23242A;
-    zoom: 1.2;
+    zoom: 0.8;
 }

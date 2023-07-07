@@ -30,13 +30,13 @@
 
 
     <div class="user_login">
-        <form id="login-form" method="POST" action="{{ route('login')}}">
+        <form id="login_form" method="POST" action="{{ route('login') }}">
             @csrf
             <div id="login_errors"></div>
             <div>
                 <label for="email">Correo Electrónico</label>
                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror"
-                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
+                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus/>
 
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
 
             <div class="action_btns">
                 <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i>
-                        Volver</a>
+                        {{ __('Volver') }}</a>
                 </div>
                 <div class="one_half last">
                     <button type="submit" class="btn btn_red" id="login_button">
@@ -107,12 +107,12 @@
 
             <div>
                 <label for="FECHA_NACIMIENTO">{{ __('Fecha de Nacimiento') }}</label>
-        
+
                 <div>
                     <input id="FECHA_NACIMIENTO" type="date"
-                        class="form-control @error('FECHA_NACIMIENTO') is-invalid @enderror"
-                        name="FECHA_NACIMIENTO" value="{{ old('FECHA_NACIMIENTO') }}" required>
-        
+                        class="form-control @error('FECHA_NACIMIENTO') is-invalid @enderror" name="FECHA_NACIMIENTO"
+                        value="{{ old('FECHA_NACIMIENTO') }}" required min="1940-01-01" max="2005-12-31">
+
                     @error('FECHA_NACIMIENTO')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -120,7 +120,7 @@
                     @enderror
                 </div>
             </div>
-        
+
             <div>
                 <label for="email">{{ __('Correo Electrónico') }}</label>
 
@@ -139,8 +139,9 @@
             <div>
                 <label for="TELEFONO_1">{{ __('Teléfono 1') }}</label>
                 <div>
-                    <input id="TELEFONO_1" type="text" class="form-control @error('TELEFONO_1') is-invalid @enderror"
-                        name="TELEFONO_1" value="{{ old('TELEFONO_1') }}" required autocomplete="phone">
+                    <input id="TELEFONO_1" type="tel"
+                        class="form-control @error('TELEFONO_1') is-invalid @enderror" name="TELEFONO_1"
+                        value="{{ old('TELEFONO_1') }}" required autocomplete="phone">
                     @error('TELEFONO_1')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -152,8 +153,9 @@
             <div>
                 <label for="DIRECCION_BOGOTA">{{ __('Dirección en Bogotá') }}</label>
                 <div>
-                    <input id="DIRECCION_BOGOTA" type="text" class="form-control @error('DIRECCION_BOGOTA') is-invalid @enderror"
-                        name="DIRECCION_BOGOTA" value="{{ old('DIRECCION_BOGOTA') }}" required autocomplete="address">
+                    <input id="DIRECCION_BOGOTA" type="text"
+                        class="form-control @error('DIRECCION_BOGOTA') is-invalid @enderror" name="DIRECCION_BOGOTA"
+                        value="{{ old('DIRECCION_BOGOTA') }}" required autocomplete="address">
                     @error('DIRECCION_BOGOTA')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -166,8 +168,9 @@
                 <label for="password">{{ __('Contraseña') }}</label>
 
                 <div>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                        name="password" required autocomplete="new-password">
+                    <input id="password" type="password"
+                        class="form-control @error('password') is-invalid @enderror" name="password" required
+                        autocomplete="new-password">
 
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -183,7 +186,7 @@
                 <label for="password-confirm">{{ __('Confirmar Contraseña') }}</label>
 
                 <div>
-                    <input id="password-confirm" type="password" class="form-control" name="CONTRASEÑA_confirmation"
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                         required autocomplete="new-password">
                 </div>
             </div>

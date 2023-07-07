@@ -14,7 +14,7 @@
                 <h2 class='header'>{{ $producto->NOMBRE_DISFRAZ }}</h2>
                 <img src='https://ik.imagekit.io/Bc/disfraz-{{ $producto->ID_PRODUCTO }}.jpeg' alt="{{ $producto->DESCRIPCION }}">
                 <p class='description'>{{ $producto->DESCRIPCION }}</p>
-                <p class='price'>${{ $producto->inventario->PRECIO_UNITARIO }}</p>
+                <p class='price'>${{ $producto->inventario ? $producto->inventario->PRECIO_UNITARIO : 'N/A' }}</p>
                 <form action="" method="POST">
                     @method('PUT')
                     @csrf

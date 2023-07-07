@@ -10,24 +10,24 @@
                     <span>Panel de control</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ url('/usuarios') }}" class="{{ Request::is('usuarios*') ? 'active' : '' }}">
                     <span class="fas fa-users"></span>
                     <span>Usuarios</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
-                <a href="{{ url('/informes') }}" class="{{ Request::is('informes*') ? 'active' : '' }}">
+                <a href="{{ url('/reporte') }}" class="{{ Request::is('reporte*') ? 'active' : '' }}">
                     <span class="fas fa-clipboard-list"></span>
-                    <span>Informes</span>
+                    <span>Reportes</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ url('/pedidos') }}" class="{{ Request::is('pedidos*') ? 'active' : '' }}">
                     <span class="fas fa-shopping-bag"></span>
                     <span>Pedidos</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ url('/productos') }}" class="{{ Request::is('productos*') ? 'active' : '' }}">
                     <span class="fas fa-table"></span>
@@ -35,21 +35,15 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('/factura') }}" class="{{ Request::is('factura*') ? 'active' : '' }}">
-                    <span class="fas fa-receipt"></span>
-                    <span>Facturación</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/vendedores') }}" class="{{ Request::is('vendedores*') ? 'active' : '' }}">
-                    <span class="fa fa-user-circle"></span>
-                    <span>Vendedores</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ url('/marketing') }}" class="{{ Request::is('marketing*') ? 'active' : '' }}">
                     <span class="fas fa-calendar-plus"></span>
                     <span>Marketing</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/factura') }}" class="{{ Request::is('factura*') ? 'active' : '' }}">
+                    <span class="fas fa-receipt"></span>
+                    <span>Facturación</span>
                 </a>
             </li>
             <li>

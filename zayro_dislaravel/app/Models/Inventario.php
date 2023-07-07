@@ -11,7 +11,6 @@ class Inventario extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ID_INVENTARIO',
         'CANTIDAD',
         'PRECIO_UNITARIO',
         'ID_USUARIO',

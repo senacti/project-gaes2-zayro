@@ -1,3 +1,6 @@
+footer {
+    max-height: 100%;
+}
 .one_half {
     width: 50%;
     display: block;
@@ -7,6 +10,7 @@
 .one_half.last {
     width: 45%;
     margin-left: 5%;
+    margin-bottom: 0;
 }
 
 .footer-distributed {
@@ -16,8 +20,9 @@
     width: 100%;
     font: bold 16px 'Lemonada', cursive;
     text-align: left;
-    padding: 50px 60px 40px;
+    padding: 50px;
     overflow: hidden;
+    height: auto;
 }
 
 .footer-distributed .footer-left {

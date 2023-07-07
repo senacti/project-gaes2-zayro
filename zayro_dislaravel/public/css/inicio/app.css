@@ -46,6 +46,7 @@ body {
     line-height: 1.5;
     background-color: grey;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
 
 input,
@@ -53,6 +54,7 @@ button,
 textarea,
 select {
     font: inherit;
+    font-size: 13px;
 }
 
 *,

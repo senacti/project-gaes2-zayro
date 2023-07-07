@@ -59,6 +59,15 @@ class UsuarioController extends Controller
             'TELEFONO_2' => 'nullable',
             'DIRECCION_BOGOTA' => 'required',
             'ID_ROL' => 'required',
+        ], [
+            'NOMBRE.required' => 'El campo nombre es obligatorio.',
+            'email.required' => 'El campo email es obligatorio.',
+            'password.required' => 'El campo contraseña es obligatorio.',
+            'FECHA_NACIMIENTO.required' => 'El campo fecha de nacimiento es obligatorio.',
+            'FECHA_NACIMIENTO.date' => 'El campo fecha de nacimiento debe ser una fecha válida.',
+            'TELEFONO_1.required' => 'El campo teléfono es obligatorio.',
+            'DIRECCION_BOGOTA.required' => 'El campo dirección es obligatorio.',
+            'ID_ROL.required' => 'El campo rol es obligatorio.',
         ]);
 
         Usuario::create($request->all());

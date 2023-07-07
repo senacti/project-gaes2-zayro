@@ -1,7 +1,7 @@
 .recent-grid {
     display: grid;
     grid-gap: 2rem;
-    grid-template-columns: 65% auto;
+    grid-template-columns: 2fr;
 
 }
 

@@ -19,25 +19,30 @@
     <div class="card-body">
         <form method="POST" action="{{ route('productos.store') }}">
             @csrf
-            <div>
-                <label for="ID_PRODUCTO">ID:</label>
-                <input type="text" name="ID_PRODUCTO" id="ID_PRODUCTO">
-            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div>
                 <label for="NOMBRE_DISFRAZ">Nombre:</label>
-                <input type="text" name="NOMBRE_DISFRAZ" id="NOMBRE_DISFRAZ">
+                <input type="text" name="NOMBRE_DISFRAZ" id="NOMBRE_DISFRAZ" value="{{ old('NOMBRE_DISFRAZ') }}">
             </div>
             <div>
                 <label for="DESCRIPCION">Descripción:</label>
-                <input type="text" name="DESCRIPCION" id="DESCRIPCION"></input>
+                <input type="text" name="DESCRIPCION" id="DESCRIPCION" value="{{ old('DESCRIPCION') }}"></input>
             </div>
             <div>
                 <label for="CANTIDAD">Cantidad:</label>
-                <input type="number" name="CANTIDAD" id="CANTIDAD"></input>
+                <input type="number" name="CANTIDAD" id="CANTIDAD" value="{{ old('CANTIDAD') }}"></input>
             </div>
             <div>
                 <label for="PRECIO_UNITARIO">Precio Unitario:</label>
-                <input type="number" name="PRECIO_UNITARIO" id="PRECIO_UNITARIO"></input>
+                <input type="number" name="PRECIO_UNITARIO" id="PRECIO_UNITARIO" value="{{ old('PRECIO_UNITARIO') }}"></input>
             </div>
             <div>
                 <label for="ID_CATEGORIA">Categoría:</label>
@@ -55,7 +60,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit">Crear</button>
+            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas crear este producto?')">Crear</button>
         </form>
     </div>
 @endsection

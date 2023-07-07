@@ -53,6 +53,49 @@ body {
 
 }
 
+.filter-container li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--text-grey);
+    transition: all 100ms;
+    border: 1px solid var(--text-grey);
+}
+
+.filter-title {
+    margin: 10px 0;
+    text-align: center;
+    color: var(--pink);
+}
+
+.filter-container p {
+    margin: 10px 0;
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+}
+
+.filter-title:hover {
+    color: var(--text-grey);
+}
+
+.filter-subtitle {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    text-align: left;
+    color: var(--text-grey);
+}
+
+.filter-user, .filter-product, .filter-inventario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-grey);
+}
+
 main {
     grid-area: main;
     padding: 0 1.5rem;
@@ -70,6 +113,18 @@ header {
     top: 0;
     z-index: 100;
     transition: left 300ms;
+}
+
+.show-bg strong, .show-bg p {
+    color: white;
+}
+
+strong {
+    color: white;
+}
+
+li {
+    color: white;
 }
 
 .header-logo {
@@ -730,13 +785,33 @@ td a {
     color: #9E5DC9;
 }
 
-.show-bg {
-    background: #f5f5f5;
-}
-
 .delete-btn {
     border: none;
     background: none;
     color: red;
     cursor: pointer;
+}
+
+.enable-btn {
+    border: none;
+    background: none;
+    color: green;
+    cursor: pointer;
+}
+
+.show-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    transition: var(--transition);
+}
+
+.show-img {
+    width: 100px;
+    height: 100px;
+    object-fit: fill;
+    border-radius: 5px;
+
 }

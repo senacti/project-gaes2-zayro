@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -42,13 +42,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link logre" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link logre" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link logre" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link logre" href="{{ route('register') }}">{{ __('Registrar') }}</a>
                             </li>
                         @endif
                     @else
@@ -64,7 +64,7 @@
                                                             document.getElementById('logout-form').submit();">
                                     {{ __('Salir') }}
                                 </h4>
-
+                                
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

@@ -13,7 +13,7 @@
 
                             <div class="row mb-3">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Correo Electronico') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -29,15 +29,15 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="CONTRASEÑA"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="CONTRASEÑA" type="password"
-                                        class="form-control @error('CONTRASEÑA') is-invalid @enderror" name="CONTRASEÑA"
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
 
-                                    @error('CONTRASEÑA')
+                                    @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -52,7 +52,7 @@
                                             {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Recuerdame') }}
                                         </label>
                                     </div>
                                 </div>
@@ -61,12 +61,12 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                                        {{ __('Entrar') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('¿Olvidaste tu contraseña?') }}
                                         </a>
                                     @endif
                                 </div>

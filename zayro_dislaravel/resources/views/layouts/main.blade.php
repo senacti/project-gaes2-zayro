@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <nav class="sidebar">
         @include('partialsindex.sidebar')
     </nav>

@@ -1,24 +1,19 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-html {
+.error-page {
   background: #000;
   font-family: 'Lemonada', cursive;
+  padding: 100px;
 }
 
-head {
+.error-head {
   display: block;
   position: relative;
   width: 200px;
-  margin: 10% auto 0;
+  margin: 0 auto;
   -webkit-animation: shvr 0.2s infinite;
   animation: shvr 0.2s infinite;
 }
 
-head::after {
+.error-head::after {
   content: '';
   width: 20px;
   height: 20px;
@@ -32,7 +27,7 @@ head::after {
   animation: eye 2.5s infinite;
 }
 
-meta {
+.error-meta {
   position: relative;
   display: inline-block;
   background: #fff;
@@ -42,7 +37,7 @@ meta {
   transform: rotate(45deg);
 }
 
-meta::after {
+.error-meta::after {
   content: '';
   position: absolute;
   border-bottom: 2px solid #fff;
@@ -53,45 +48,47 @@ meta::after {
   border-radius: 50%;
 }
 
-meta::before {
+.error-meta::before {
   bottom: auto;
   top: -100px;
   transform: rotate(45deg);
   left: 0;
 }
 
-meta:nth-of-type(2) {
+.error-meta:nth-of-type(2) {
   float: right;
   transform: rotate(-45deg);
 }
 
-meta:nth-of-type(2)::after {
+.error-meta:nth-of-type(2)::after {
   left: 5px;
 }
 
-meta:nth-of-type(3) {
+.error-meta:nth-of-type(3) {
   display: none;
 }
 
-body {
-  margin-top: 100px;
+.error-body {
+  margin-top: 35px;
   text-align: center;
   color: #ffffff;
+  font-size: 8px;
+  margin: 33px;
 }
 
-body::before {
+.error-body::before {
   content: '404';
-  font-size: 80px;
+  font-size: 60px;
   font-weight: 800;
   display: block;
-  margin-bottom: 10px;
+  margin: 40px 0;
 }
 
-body::after {
+.error-body::after {
   content: 'Perdido? Cómo...?  Por qué?  Ahhhh....';
   color: #9E5DC9;
   width: 120px;
-  font-size: 30px;
+  font-size: 24px;
   overflow: hidden;
   display: inline-block;
   white-space: nowrap;
@@ -190,10 +187,9 @@ body::after {
 .bubbly-button {
   font-family: 'Lemonada', cursive;
   display: inline-block;
-  font-size: 1em;
+  font-size: 13px;
   padding: 1em 0.5em;
-  margin-top: 100px;
-  margin-bottom: 60px;
+  margin: 70px 0;
   -webkit-appearance: none;
   appearance: none;
   background-color: #900C3E;

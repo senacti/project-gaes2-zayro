@@ -16,8 +16,15 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
-        $productCount = Producto::count();
+        $productos = Producto::with('inventario', 'categoria', 'talla')->get();
+        
+        $productCount = DB::table('PRODUCTO')
+            ->where('STATUS', '=', '1')
+            ->count();
+
+        $disabledCount = DB::table('PRODUCTO')
+            ->where('STATUS', '=', '0')
+            ->count();
 
         $popularCategoria = DB::table('PRODUCTO')
             ->select('ID_CATEGORIA', DB::raw('COUNT(*) as category_count'))
@@ -34,7 +41,7 @@ class ProductoController extends Controller
         $popularCategoriaName = Categoria::find($popularCategoria->ID_CATEGORIA)->CATEGORIA;
         $popularTallaName = Talla::find($popularTalla->ID_TALLA)->NUMERO_TALLA;
 
-        return view('productos.index', compact('productos', 'productCount', 'popularCategoriaName', 'popularTallaName'));
+        return view('productos.index', compact('productos', 'productCount', 'popularCategoriaName', 'popularTallaName', 'disabledCount'));
     }
 
     /**
@@ -42,10 +49,9 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $inventarios = Inventario::all();
         $categorias = Categoria::all();
         $tallas = Talla::all();
-        return view('productos.create', compact('inventarios', 'categorias', 'tallas'));
+        return view('productos.create', compact('categorias', 'tallas'));
     }
 
     /**
@@ -54,19 +60,54 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ID_PRODUCTO' => 'required',
-            'NOMBRE_DISFRAZ' => 'required',
-            'DESCRIPCION' => 'required',
-            'CANTIDAD' => 'required',
-            'PRECIO' => 'required',
+            'NOMBRE_DISFRAZ' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
+            'DESCRIPCION' => ['required', 'string', 'regex:/^[a-zA-Z0-9\s\.,-]+$/'],
             'ID_CATEGORIA' => 'required',
             'ID_TALLA' => 'required',
+            'CANTIDAD' => ['required', 'integer', 'min:1', 'max:100'],
+            'PRECIO_UNITARIO' => ['required', 'integer', 'min:50000', 'max:300000'],
+        ], [
+            'NOMBRE_DISFRAZ.required' => 'El nombre del disfraz es obligatorio.',
+            'NOMBRE_DISFRAZ.string' => 'El nombre del disfraz debe ser una cadena de texto.',
+            'NOMBRE_DISFRAZ.max' => 'El nombre del disfraz no puede exceder los 255 caracteres.',
+            'NOMBRE_DISFRAZ.regex' => 'El nombre del disfraz solo puede contener letras, números y espacios.',
+            'DESCRIPCION.required' => 'La descripción es obligatoria.',
+            'DESCRIPCION.string' => 'La descripción debe ser una cadena de texto.',
+            'DESCRIPCION.regex' => 'La descripción solo puede contener letras, números, espacios, comas, puntos y guiones.',
+            'CANTIDAD.required' => 'La cantidad es obligatoria.',
+            'CANTIDAD.integer' => 'La cantidad debe ser un número entero.',
+            'CANTIDAD.min' => 'La cantidad debe ser mayor o igual a 1.',
+            'CANTIDAD.max' => 'La cantidad no puede exceder 100.',
+            'PRECIO_UNITARIO.required' => 'El precio unitario es obligatorio.',
+            'PRECIO_UNITARIO.integer' => 'El precio unitario debe ser un valor entero.',
+            'PRECIO_UNITARIO.min' => 'El precio unitario debe ser mayor o igual a 50000',
+            'PRECIO_UNITARIO.max' => 'El precio unitario no puede exceder 300000',
         ]);
 
-        $producto = Producto::create($request->all());
+        // Create the Producto record
+        $producto = Producto::create([
+            'NOMBRE_DISFRAZ' => $request->input('NOMBRE_DISFRAZ'),
+            'DESCRIPCION' => $request->input('DESCRIPCION'),
+            'ID_CATEGORIA' => $request->input('ID_CATEGORIA'),
+            'ID_TALLA' => $request->input('ID_TALLA'),
+        ]);
 
-        return redirect()->route('productos.index')->with('success', 'Producto created successfully');
+        // Retrieve the associated Inventario record
+        $inventario = new Inventario;
+        $inventario->CANTIDAD = $request->input('CANTIDAD');
+        $inventario->PRECIO_UNITARIO = $request->input('PRECIO_UNITARIO');
+        // Set other Inventario column values if needed
+
+        // Save the Inventario record
+        $inventario->save();
+
+        // Associate the Inventario record to the created Producto
+        $producto->inventario()->associate($inventario);
+        $producto->save();
+
+        return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente');
     }
+
 
     /**
      * Display the specified resource.
@@ -83,11 +124,11 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::findOrFail($id);
-        $inventarios = Inventario::all();
         $categorias = Categoria::all();
         $tallas = Talla::all();
-        return view('productos.edit', compact('producto', 'inventarios', 'categorias', 'tallas'));
+        return view('productos.edit', compact('producto', 'categorias', 'tallas'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -95,30 +136,70 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'ID_PRODUCTO' => 'required',
-            'NOMBRE_DISFRAZ' => 'required',
-            'DESCRIPCION' => 'required',
-            'CANTIDAD' => 'required',
-            'PRECIO' => 'required',
+            'NOMBRE_DISFRAZ' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
+            'DESCRIPCION' => ['required', 'string', 'regex:/^[a-zA-Z0-9\s\.,-]+$/'],
             'ID_CATEGORIA' => 'required',
             'ID_TALLA' => 'required',
+            'CANTIDAD' => ['required', 'integer', 'min:1', 'max:100'],
+            // Adjust the min and max values as needed
+            'PRECIO_UNITARIO' => ['required', 'integer', 'min:50000', 'max:300000'], // Adjust the min and max values as needed
+        ], [
+            'NOMBRE_DISFRAZ.required' => 'El nombre del disfraz es obligatorio.',
+            'NOMBRE_DISFRAZ.string' => 'El nombre del disfraz debe ser una cadena de texto.',
+            'NOMBRE_DISFRAZ.max' => 'El nombre del disfraz no puede exceder los 255 caracteres.',
+            'NOMBRE_DISFRAZ.regex' => 'El nombre del disfraz solo puede contener letras, números y espacios.',
+            'DESCRIPCION.required' => 'La descripción es obligatoria.',
+            'DESCRIPCION.string' => 'La descripción debe ser una cadena de texto.',
+            'DESCRIPCION.regex' => 'La descripción solo puede contener letras, números, espacios, comas, puntos y guiones.',
+            'CANTIDAD.required' => 'La cantidad es obligatoria.',
+            'CANTIDAD.integer' => 'La cantidad debe ser un número entero.',
+            'CANTIDAD.min' => 'La cantidad debe ser mayor o igual a 1.',
+            'CANTIDAD.max' => 'La cantidad no puede exceder 100.',
+            'PRECIO_UNITARIO.required' => 'El precio unitario es obligatorio.',
+            'PRECIO_UNITARIO.integer' => 'El precio unitario debe ser un valor entero.',
+            'PRECIO_UNITARIO.min' => 'El precio unitario debe ser mayor o igual a 50000',
+            'PRECIO_UNITARIO.max' => 'El precio unitario no puede exceder 300000',
         ]);
 
         $producto = Producto::findOrFail($id);
-        $producto->update($request->all());
 
-        return redirect()->route('productos.index')->with('success', 'Producto updated successfully');
+        // Update the Producto record
+        $producto->update([
+            'NOMBRE_DISFRAZ' => $request->input('NOMBRE_DISFRAZ'),
+            'DESCRIPCION' => $request->input('DESCRIPCION'),
+            'ID_CATEGORIA' => $request->input('ID_CATEGORIA'),
+            'ID_TALLA' => $request->input('ID_TALLA'),
+        ]);
+
+        // Retrieve the associated Inventario record
+        $inventario = $producto->inventario;
+
+        if ($inventario) {
+            // Update the CANTIDAD and PRECIO_UNITARIO values of the associated Inventario record
+            $inventario->update([
+                'CANTIDAD' => $request->input('CANTIDAD'),
+                'PRECIO_UNITARIO' => $request->input('PRECIO_UNITARIO'),
+            ]);
+        }
+
+        return redirect()->route('productos.index')->with('success', 'Producto actualizado exitosamente');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function inhabilitar($id)
     {
         $producto = Producto::findOrFail($id);
-        $producto->delete();
+        $producto->STATUS = false;
+        $producto->save();
 
-        return redirect()->route('productos.index')->with('success', 'Producto deleted successfully');
+        return redirect()->route('productos.index')->with('success', 'Producto inhabilitado correctamente');
+    }
+
+    public function habilitar($id)
+    {
+        $producto = Producto::findOrFail($id);
+        $producto->STATUS = true;
+        $producto->save();
+
+        return redirect()->route('productos.index')->with('success', 'Producto habilitado correctamente');
     }
 }

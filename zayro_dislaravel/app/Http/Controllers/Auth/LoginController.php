@@ -32,8 +32,11 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ], [
+            $this->username() . '.required' => 'El correo electrónico es obligatorio',
+            'password.required' => 'El campo contraseña es obligatorio',
         ]);
     }
 
@@ -46,15 +49,9 @@ class LoginController extends Controller
      */
 
 
-    protected function authenticated(Request $request, $user)
+    protected function authenticated(Request $request, $usuario)
     {
-        if (auth()->check()) {
-            return redirect()->route('dashboard');
-        } else {
-            throw ValidationException::withMessages([
-                'email' => 'Invalid credentials',
-            ])->redirectTo(route('login'));
-        }
+        return redirect()->route('disfraces');
     }
 
 }
